@@ -44,18 +44,21 @@ public class Media {
 
     public void playConfirm(Scanner scanner) {
         System.out.println("Quale file vuoi riprodurre?");
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-        if (choice >= 1 && choice <= mediaList.size()) {
-            Playable selectedMedia = mediaList.get(choice - 1);
+        while (true) {
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+            if (choice >= 1 && choice <= mediaList.size()) {
+                Playable selectedMedia = mediaList.get(choice - 1);
 
-            if (selectedMedia instanceof Image) {
-                ((Image) selectedMedia).show();
+                if (selectedMedia instanceof Image) {
+                    ((Image) selectedMedia).show();
+                } else {
+                    selectedMedia.play();
+                }
             } else {
-                selectedMedia.play();
+                System.out.println("Scelta non valida, riprova.");
             }
-        } else {
-            System.out.println("Scelta non valida, riprova.");
+            if (choice == 0) break;
         }
     }
 }
