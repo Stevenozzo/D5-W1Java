@@ -1,4 +1,5 @@
 package com.mediaplayer.media;
 
-public class Playable {
+public interface Playable {
+    void play();
 }
